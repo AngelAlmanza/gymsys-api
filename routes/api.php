@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ConceptController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SaleController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ConceptController;
+use App\Http\Controllers\API\MemberController;
+use App\Http\Controllers\API\PlanController;
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\SaleController;
+use App\Http\Controllers\API\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth'], function () {

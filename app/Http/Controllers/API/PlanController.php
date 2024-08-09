@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\CategoryRequest;
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PlanRequest;
+use App\Models\Plan;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class PlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'categories' => Category::all(),
+            'plans' => Plan::all(),
         ]);
     }
 
@@ -30,13 +30,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CategoryRequest $request): JsonResponse
+    public function store(PlanRequest $request): JsonResponse
     {
-        $category = Category::create($request->all());
-        $category->save();
+        $plan = Plan::create($request->all());
+        $plan->save();
 
         return response()->json([
-            'category' => $category,
+            'plan' => $plan,
         ], 201);
     }
 
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     public function show(string $id): JsonResponse
     {
         return response()->json([
-            'category' => Category::findOrFail($id),
+            'plan' => Plan::findOrFail($id),
         ]);
     }
 
@@ -61,13 +61,13 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $request, string $id): JsonResponse
+    public function update(PlanRequest $request, string $id): JsonResponse
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
+        $plan = Plan::findOrFail($id);
+        $plan->update($request->all());
 
         return response()->json([
-            'category' => $category,
+            'plan' => $plan,
         ]);
     }
 
@@ -76,8 +76,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id): JsonResponse
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        $plan = Plan::findOrFail($id);
+        $plan->delete();
 
         return response()->json(null, 204);
     }

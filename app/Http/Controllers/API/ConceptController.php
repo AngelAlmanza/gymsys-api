@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ConceptRequest;
+use App\Models\Concept;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ConceptController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class ProductController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'products' => Product::all(),
+            'concepts' => Concept::all(),
         ]);
     }
 
@@ -29,13 +31,13 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request): JsonResponse
+    public function store(ConceptRequest $request): JsonResponse
     {
-        $product = Product::create($request->all());
-        $product->save();
+        $concept = Concept::create($request->all());
+        $concept->save();
 
         return response()->json([
-            'product' => $product,
+            'concept' => $concept,
         ], 201);
     }
 
@@ -45,7 +47,7 @@ class ProductController extends Controller
     public function show(string $id): JsonResponse
     {
         return response()->json([
-            'product' => Product::findOrFail($id),
+            'concept' => Concept::findOrFail($id),
         ]);
     }
 
@@ -60,13 +62,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, string $id): JsonResponse
+    public function update(ConceptRequest $request, string $id): JsonResponse
     {
-        $product = Product::findOrFail($id);
-        $product->update($request->all());
+        $concept = Concept::findOrFail($id);
+        $concept->update($request->all());
 
         return response()->json([
-            'product' => $product,
+            'concept' => $concept,
         ]);
     }
 
@@ -75,8 +77,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id): JsonResponse
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $concept = Concept::findOrFail($id);
+        $concept->delete();
 
         return response()->json(null, 204);
     }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Events\SaleCreated;
 use App\Http\Requests\SaleRequest;
 use App\Models\Product;
